@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+	</head>
+	<script src="./change.js"></script>
+	<body>
+		<select id="Reason" placeholder="請選擇案由"></select>
+		<button onclick="selectReason();">選擇</button>
+		<!--<p id="times"></p>-->
+		<!--<table>
+			<tr id="1">
+			<tr id="2">
+			<tr id="3">
+			<tr id="4">
+			<tr id="5">
+			<tr id="6">
+			<tr id="7">
+			<tr id="8">
+			<tr id="9">
+			<tr id="10">
+			<tr id="11">
+			<tr id="12">
+			<tr id="13">
+			<tr id="14">
+			<tr id="15">
+			<tr id="16">
+			<tr id="17">
+			<tr id="18">
+			<tr id="19">
+			<tr id="20">
+			<tr id="21">
+		</table>-->
+	</body>
+	<script>
+		// 選擇案由後，會跳出該案由對應的判決
+		//var v=document.getElementById("Reason").value;
+		var requestURL ="https://github.com/yu-syuan-tsai/Law_Change/blob/main/change.json";
+		var request = new XMLHttpRequest();
+		request.open("GET", requestURL);
+		request.responseType = "json";
+		request.send();
+		request.onload = function () {
+			var change = request.response;
+		};
+	</script>
+	<script>
+		for(let k=0;k<18;k++){ 	//下拉式清單 //記得改數字
+			var arr = Reason_List.split(",");
+			var opt=document.createElement("option");
+			opt.text=(k+1)+"."+arr[k];
+			opt.value=k;
+			document.getElementById("Reason").add(opt);
+		}
+	</script>
+</html>		
